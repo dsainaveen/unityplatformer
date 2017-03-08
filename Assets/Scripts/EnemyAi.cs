@@ -8,22 +8,22 @@ public class EnemyAi : MonoBehaviour {
 	public float damping;
 	public float enemyMovementSpeed;
 	public Transform fpsTransform;
-	Rigidbody theRigidbody;
+	Rigidbody2D theRigidbody;
 	Renderer theRenderer;
 
 
 	// Use this for initialization
 	void Start () { 
 		theRenderer = GetComponent<Renderer> ();
-		theRigidbody = GetComponent<Rigidbody> ();
+		theRigidbody = GetComponent<Rigidbody2D> ();
 
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
-		fpsTargetDistance = Vector3.Distance (fpsTransform.position, transform.position);
+		fpsTargetDistance = Vector2.Distance (fpsTransform.position, transform.position);
 		if (fpsTargetDistance < enemyLookDistance) {
 			theRenderer.material.color = Color.yellow;
 			lookAtPlayer ();
