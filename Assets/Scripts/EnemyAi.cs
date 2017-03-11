@@ -10,6 +10,7 @@ public class EnemyAi : MonoBehaviour {
 	public Transform fpsTransform;
 	Rigidbody2D theRigidbody;
 	Renderer theRenderer;
+	Vector2 dir;
 
 
 	// Use this for initialization
@@ -26,7 +27,7 @@ public class EnemyAi : MonoBehaviour {
 		fpsTargetDistance = Vector2.Distance (fpsTransform.position, transform.position);
 		if (fpsTargetDistance < enemyLookDistance) {
 			theRenderer.material.color = Color.yellow;
-			lookAtPlayer ();
+			//lookAtPlayer ();
 
 
 			if(fpsTargetDistance<attackDistance){
@@ -45,7 +46,12 @@ public class EnemyAi : MonoBehaviour {
 	}
 
 	void attackPlayer(){
-		theRigidbody.AddForce (transform.forward * enemyMovementSpeed);
+		var relativedir = transform.InverseTransformPoint (fpsTransform.position);
+
+		if (relativedir.x < 0.0)
+			theRigidbody.AddForce (-transform.right * enemyMovementSpeed);
+		else if(relativedir.x>0.0)
+			theRigidbody.AddForce (transform.right * enemyMovementSpeed);
 		
 	}
 
