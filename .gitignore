@@ -28,3 +28,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Prefabs/support.prefab
+*.prefab
+Assets/Prefabs/rotator vertical.prefab
+*.prefab
+Assets/Prefabs/support.prefab
+Assets/Prefabs/rotator vertical.prefab
+*.prefab
+Assets/Prefabs/rotator vertical.prefab
